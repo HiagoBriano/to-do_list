@@ -11,7 +11,7 @@ const createUser = async (name: string, email: string, password: string) => {
 
     return createdUser;
   } catch (error) {
-    console.log('criar registro');
+    console.log('Error creating new user');
     console.log(error);
   }
 };
