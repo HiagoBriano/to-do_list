@@ -9,11 +9,10 @@ datasource db {
 
 model User {
   id        Int      @id @default(autoincrement())
-  nome      String
+  name      String
   email     String   @unique
   password  String
   createIn  DateTime @default(now())
-  lastLogin DateTime @updatedAt
   Task      Task[]
 }
 
