@@ -3,6 +3,10 @@ import jwt from 'jsonwebtoken';
 
 const SECRET = 'super_senha';
 
+interface IEmail {
+  email: string
+}
+
 export const createToken = (email: string) => {
   const token = jwt.sign({ email }, SECRET, {
     expiresIn: '1d',
@@ -14,7 +18,7 @@ export const createToken = (email: string) => {
 export const readToken = (token: string) => {
   try {
     const decoded = jwt.verify(token, SECRET);
-    return decoded;
+    return decoded as IEmail;
   } catch (e) {
     return null;
   }

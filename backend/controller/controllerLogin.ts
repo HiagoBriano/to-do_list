@@ -5,8 +5,8 @@ import serviceLogin from '../services/serviceLogin';
 const controllerLogin = async (req: Request, res: Response) => {
   const { email, password } = req.body;
   const replyIfTheEmailExists = await serviceLogin(email);
-  if (replyIfTheEmailExists === 'Unregistered E-mail') {
-    return res.status(400).json({ message: replyIfTheEmailExists });
+  if (!replyIfTheEmailExists) {
+    return res.status(400).json({ message: 'Unregistered E-mail' });
   }
   if (
     replyIfTheEmailExists &&

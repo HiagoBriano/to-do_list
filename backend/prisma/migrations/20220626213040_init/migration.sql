@@ -16,7 +16,7 @@ CREATE TABLE "Task" (
     "status" TEXT NOT NULL,
     "authorId" INTEGER NOT NULL,
     "createIn" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "lastLogin" TIMESTAMP(3) NOT NULL,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "Task_pkey" PRIMARY KEY ("id")
 );

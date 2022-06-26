@@ -7,7 +7,7 @@ const serviceCreateUser = async (
   password: string
 ) => {
   const queryAnswer = await consultUserByEmail(email);
-  if (queryAnswer === 'Unregistered E-mail') {
+  if (!queryAnswer) {
     const newUserData = await createUser(name, email, password);
     return newUserData;
   }

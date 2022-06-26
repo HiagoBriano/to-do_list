@@ -7,7 +7,7 @@ const consultUserByEmail = async (email: string) => {
     const createdUser = await prisma.user.findUnique({
       where: { email }
     });
-    return createdUser || 'Unregistered E-mail';
+    return createdUser;
   } catch (error) {
     console.log('Error querying email');
     console.log(error);
