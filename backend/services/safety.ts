@@ -1,7 +1,7 @@
 import { compareSync, hash } from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
-const SECRET = 'super_senha';
+const SECRET = process.env.SECRET as string;
 
 interface IEmail {
   email: string
