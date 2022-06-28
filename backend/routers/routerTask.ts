@@ -6,6 +6,8 @@ import validateToken from '../middlewares/validateToken';
 
 const routerTask = Router();
 
-routerTask.route('/').post(validateToken, validateTask, validateStatus, controllerCreateTask);
-
+routerTask
+  .route('/')
+  .get(validateToken)
+  .post(validateToken, validateTask, validateStatus, controllerCreateTask);
 export default routerTask;
