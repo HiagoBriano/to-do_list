@@ -9,8 +9,10 @@ const controllerCreateUser = async (req: Request, res: Response) => {
   if (response === 'E-mail already registered') {
     return res.status(400).json({ message: response });
   }
-  const token = await createToken(email);
-  return res.status(201).json({ ...response, token });
+  if (response) {
+    const token = await createToken(response.id, email);
+    return res.status(201).json({ ...response, token });
+  }
 };
 
 export default controllerCreateUser;

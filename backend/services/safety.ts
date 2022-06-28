@@ -1,14 +1,16 @@
 import { compareSync, hash } from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+require('dotenv/config');
 
-const SECRET = process.env.SECRET as string;
+const SECRET = process.env.SECRET || 'invalid';
 
 interface IEmail {
-  email: string
+  id: number;
+  email: string;
 }
 
-export const createToken = (email: string) => {
-  const token = jwt.sign({ email }, SECRET, {
+export const createToken = (id: number, email: string) => {
+  const token = jwt.sign({ id, email }, SECRET, {
     expiresIn: '1d',
     algorithm: 'HS256',
   });

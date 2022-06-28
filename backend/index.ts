@@ -2,6 +2,7 @@ import express from 'express';
 import routerLogin from './routers/routerLogin';
 import routerTask from './routers/routerTask';
 import routerUser from './routers/routerUser';
+require('dotenv/config');
 
 const app = express();
 app.use(express.json());

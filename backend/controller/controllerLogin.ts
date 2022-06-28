@@ -12,8 +12,8 @@ const controllerLogin = async (req: Request, res: Response) => {
     replyIfTheEmailExists &&
     (await validBcrypt(password, replyIfTheEmailExists.password))
   ) {
-    const token = createToken(email);
-    return res.status(200).json({ name: replyIfTheEmailExists.name, token });
+    const token = createToken(replyIfTheEmailExists.id, email);
+    return res.status(200).json({ name: replyIfTheEmailExists.name, email, token });
   }
   return res.status(400).json({ message: 'invalid password' });
 };

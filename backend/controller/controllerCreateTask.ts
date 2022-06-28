@@ -8,7 +8,7 @@ const controllerCreateTask = async (req: Request, res: Response) => {
   if (token) {
     const responseToken = readToken(token);
     if (responseToken) {
-      serviceCreateTask(responseToken.email, task, status);
+      serviceCreateTask(responseToken.id, task, status);
       return res.status(201).json({ message: 'created task' });
     }
   }
