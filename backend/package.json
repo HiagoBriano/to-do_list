@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node --loader ts-node/esm --experimental-specifier-resolution=node index.ts",
+    "start": "npx prisma generate && node --loader ts-node/esm --experimental-specifier-resolution=node index.ts",
     "dev": "nodemon index.ts",
     "docker": "docker image build -t backend_to-do-list:v1 . && docker run -dit -p 3001:3001 --name backend_to-do-list backend_to-do-list:v1",
     "test": "echo \"Error: no test specified\" && exit 1"
