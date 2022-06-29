@@ -16,11 +16,11 @@ Projeto idealizado pela [Trybe](https://www.betrybe.com/)
 
 ### Endpoints
 
-<details>
-  <summary><h4>POST /user<h4></summary>
+<details><summary><h4>/user<h4></summary>
 
-<details>
-<summary><strong>Adicionar um novo usuário à sua tabela de banco de dados</strong></summary><br />
+<details><summary><strong>Criar um novo usuário</strong></summary><br />
+
+- Métodos de requisição: POST
 
 - Formato do body:
 
@@ -42,14 +42,13 @@ Projeto idealizado pela [Trybe](https://www.betrybe.com/)
 	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiZW1haWwiOiJicmV0dEBlbWFpbC5jb20iLCJpYXQiOjE2NTY1NDIxOTMsImV4cCI6MTY1NjYyODU5M30.RjP6wP3IjLkifLGjJzZY-DQgy2crd6WzInciUx7C5zc"
 }
 ```
-</details>
-</details>
+</details></details>
   
-<details>
-  <summary><h4>POST /login<h4></summary>
+<details><summary><h4>/login<h4></summary>
 
-<details>
-<summary><strong>Fazer login na aplicação</strong></summary><br />
+<details><summary><strong>Fazer login na aplicação</strong></summary><br />
+
+- Métodos de requisição: POST
 
 - Formato do body:
 
@@ -69,11 +68,7 @@ Projeto idealizado pela [Trybe](https://www.betrybe.com/)
 	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiZW1haWwiOiJicmV0dEBlbWFpbC5jb20iLCJpYXQiOjE2NTY1NDMwNzIsImV4cCI6MTY1NjYyOTQ3Mn0.JQlqJbC8yup3BiSHd-aGriRY-9z7sR_7uGlaB82M89E"
 }
 ```
-</details>
-</details>
-
-
-</details>
+</details></details>
 
 ## Autor
 
