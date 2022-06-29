@@ -1,4 +1,5 @@
 import express from 'express';
+import serverError from './middlewares/serverError';
 import routerLogin from './routers/routerLogin';
 import routerTask from './routers/routerTask';
 import routerUser from './routers/routerUser';
@@ -13,6 +14,7 @@ app.use('/user', routerUser);
 app.use('/login', routerLogin);
 app.use('/task', routerTask);
 app.get('/', (_req, res) => res.json({ message: 'active server' }));
+app.use(serverError)
 
 app.listen(+PORT, () => {
   console.log(`Online at the Port ${PORT}`);

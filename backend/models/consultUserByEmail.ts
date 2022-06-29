@@ -11,6 +11,7 @@ const consultUserByEmail = async (email: string) => {
   } catch (error) {
     console.log('Error querying email');
     console.log(error);
+    throw new Error("");
   }
 };
 

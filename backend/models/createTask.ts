@@ -12,6 +12,7 @@ const createTask = async (task: string, status: string, authorId: number) => {
   } catch (error) {
     console.log('Error creating new task');
     console.log(error);
+    throw new Error("");
   }
 };
 

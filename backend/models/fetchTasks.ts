@@ -26,6 +26,7 @@ const fetchTasks = async (id: number) => {
   } catch (error) {
     console.log('Error fetching tasks');
     console.log(error);
+    throw new Error("");
   }
 };
 

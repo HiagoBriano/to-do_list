@@ -12,6 +12,8 @@ const deleteTask = async (idTask: number) => {
   } catch (error) {
     console.log('Error deleting task');
     console.log(error);
+    
+    throw new Error("");
   }
 };
 
