@@ -9,7 +9,7 @@ const controllerUpdate = async (
   try {
     const { idTask, task, status } = req.body;
 
-    const uptadeResponse = await serviceUpadate(+idTask, task || status);
+    const uptadeResponse = await serviceUpadate(+idTask, task, status);
     return res.status(200).json(uptadeResponse);
   } catch (error) {
     next(error);

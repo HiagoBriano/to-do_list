@@ -148,42 +148,6 @@ Projeto idealizado pela [Trybe](https://www.betrybe.com/)
 
 </details>
 
-<details><summary><strong>Editar status da tarefa</strong></summary><br />
-
-- Métodos de requisição: PATCH
-
-- Formato do header:
-
-```json
-{
-  "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiZW1haWwiOiJicmV0dEBlbWFpbC5jb20iLCJpYXQiOjE2NTY1NDMwNzIsImV4cCI6MTY1NjYyOTQ3Mn0.JQlqJbC8yup3BiSHd-aGriRY-9z7sR_7uGlaB82M89E" // Regra: Token criado ao fazer login ou na criação de usuário
-}
-```
-
-- Formato do body:
-
-```json
-{
-  "idTask": 8,
-  "status": "done" // Regra: Precisa ser 'done', 'in progress' ou 'pending'
-}
-```
-
-- Formato da resposta:
-
-```json
-{
-  "id": 8,
-  "task": "escrever readme",
-  "status": "done",
-  "authorId": 7,
-  "createIn": "2022-06-30T00:25:50.506Z",
-  "updatedAt": "2022-06-30T00:39:48.671Z"
-}
-```
-
-</details>
-
 <details><summary><strong>Editar tarefa</strong></summary><br />
 
 - Métodos de requisição: PATCH
@@ -200,8 +164,9 @@ Projeto idealizado pela [Trybe](https://www.betrybe.com/)
 
 ```json
 {
-  "idTask": 8,
-  "task": "readme criado"
+  "idTask": 7,
+  "task": "readme criado",
+  "status": "pending"
 }
 ```
 
@@ -209,12 +174,11 @@ Projeto idealizado pela [Trybe](https://www.betrybe.com/)
 
 ```json
 {
-  "id": 8,
+  "id": 7,
   "task": "readme criado",
-  "status": "done",
-  "authorId": 7,
-  "createIn": "2022-06-30T00:25:50.506Z",
-  "updatedAt": "2022-06-30T00:42:05.313Z"
+  "status": "pending",
+  "createIn": "2022-06-30T00:25:24.214Z",
+  "updatedAt": "2022-06-30T01:10:53.000Z"
 }
 ```
 

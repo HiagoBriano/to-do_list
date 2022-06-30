@@ -1,16 +1,8 @@
-import updateStatus from '../models/updateStatus';
-import updateTask from '../models/updateTask';
+import updateStatus from '../models/updateTask';
 
-const serviceUpadate = async (idTask: number, data: string) => {
-  const validStatus = ['done', 'in progress', 'pending'];
-
-  if (validStatus.includes(data)) {
-    const updatedStatus = await updateStatus(idTask, data);
-    return updatedStatus;
-  }
-
-  const updatedTask = await updateTask(idTask, data);
-  return updatedTask;
+const serviceUpadate = async (idTask: number, task: string, status: string) => {
+  const updatedStatus = await updateStatus(idTask, task, status);
+  return updatedStatus;
 };
 
 export default serviceUpadate;
