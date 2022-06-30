@@ -54,6 +54,7 @@ describe('Making a request on the login page', () => {
     expect(chaiHttpResponse.body).to.not.have.property('email');
     expect(chaiHttpResponse.body).to.not.have.property('token');
     expect(chaiHttpResponse.body).to.not.have.property('password');
+    expect(chaiHttpResponse.body.message).to.be.eq('Sending the email is mandatory');
   });
 
   it('without sending the password', async () => {
@@ -69,6 +70,7 @@ describe('Making a request on the login page', () => {
     expect(chaiHttpResponse.body).to.not.have.property('email');
     expect(chaiHttpResponse.body).to.not.have.property('token');
     expect(chaiHttpResponse.body).to.not.have.property('password');
+    expect(chaiHttpResponse.body.message).to.be.eq('Sending the password is mandatory');
   });
 
   it('without sending email and password', async () => {
@@ -82,5 +84,40 @@ describe('Making a request on the login page', () => {
     expect(chaiHttpResponse.body).to.not.have.property('email');
     expect(chaiHttpResponse.body).to.not.have.property('token');
     expect(chaiHttpResponse.body).to.not.have.property('password');
+    expect(chaiHttpResponse.body.message).to.be.eq('Sending the email is mandatory');
+  });
+
+  it('invalid password', async () => {
+    const chaiHttpResponse = await chai
+      .request('http://localhost:3001')
+      .post('/login')
+      .send({
+        email: 'brett@email.com',
+        password: '1234567',
+      });
+
+    expect(chaiHttpResponse.status).to.be.eq(400);
+    expect(chaiHttpResponse.body).to.not.have.property('name');
+    expect(chaiHttpResponse.body).to.not.have.property('email');
+    expect(chaiHttpResponse.body).to.not.have.property('token');
+    expect(chaiHttpResponse.body).to.not.have.property('password');
+    expect(chaiHttpResponse.body.message).to.be.eq('invalid password');
+  });
+
+  it('invalid email', async () => {
+    const chaiHttpResponse = await chai
+      .request('http://localhost:3001')
+      .post('/login')
+      .send({
+        email: 'brett@xablau.com',
+        password: '123456',
+      });
+
+    expect(chaiHttpResponse.status).to.be.eq(400);
+    expect(chaiHttpResponse.body).to.not.have.property('name');
+    expect(chaiHttpResponse.body).to.not.have.property('email');
+    expect(chaiHttpResponse.body).to.not.have.property('token');
+    expect(chaiHttpResponse.body).to.not.have.property('password');
+    expect(chaiHttpResponse.body.message).to.be.eq('Unregistered E-mail');
   });
 });
