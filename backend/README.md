@@ -8,7 +8,7 @@ A Todo List API é uma aplicação RESTful para a manipulação e leitura de tar
 
 A Todo List API foi pensada para a prática geral dos conhecimentos sobre uma aplicação em Node.js com Express, cobrindo tópicos como: SOLID, REST, TDD e POO.
 
-__Os usuários devem ser capaz de?__
+__Os usuários devem ser capaz de:__
 - Registrar-se e Autenticar-se
 - Criar tarefas
 - Buscar tarefas
@@ -24,13 +24,13 @@ __Os usuários devem ser capaz de?__
 - Prisma
 - Postgres
 
-### Links
+## Endpoints
 
-- Api URL: [https://back-to-do-list-hbs.herokuapp.com/](https://back-to-do-list-hbs.herokuapp.com/)
+### Link
 
-### Endpoints
+- URL da Api: [https://back-to-do-list-hbs.herokuapp.com/](https://back-to-do-list-hbs.herokuapp.com/)
 
-<details><summary><h4>/user<h4></summary>
+### /user
 
 <details><summary><strong>Criar um novo usuário</strong></summary><br />
 
@@ -60,8 +60,8 @@ __Os usuários devem ser capaz de?__
 
 </details>
 </details>
-  
-<details><summary><h4>/login<h4></summary>
+
+### /login
 
 <details><summary><strong>Fazer login na aplicação</strong></summary><br />
 
@@ -89,7 +89,7 @@ __Os usuários devem ser capaz de?__
 </details>
 </details>
 
-<details><summary><h4>/task<h4></summary>
+### /task
 
 <details><summary><strong>Criar uma nova tarefa</strong></summary><br />
 
@@ -229,7 +229,7 @@ __Os usuários devem ser capaz de?__
 </details>
 </details>
 
-### Recursos úteis
+## Recursos úteis
 
 - [Documentação Prisma](https://www.prisma.io/docs/)
 
