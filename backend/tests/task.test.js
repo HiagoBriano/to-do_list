@@ -25,9 +25,9 @@ describe('creating new task', () => {
     ]);
   });
 
-  // after(() => {
-  //   prisma.user.findUnique.restore();
-  // });
+  after(() => {
+    sinon.restore();
+  });
 
   it('Submitting the correct information', async () => {
     const chaiHttpResponse = await chai

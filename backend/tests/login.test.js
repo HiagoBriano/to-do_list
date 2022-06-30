@@ -21,9 +21,9 @@ describe('Making a request on the login page', () => {
     ]);
   });
 
-  // afterEach(() => {
-  //   prisma.user.findUnique.restore();
-  // });
+  after(() => {
+    sinon.restore();
+  });
 
   it("checks if it is returning the user's token, name and e-mail, and if it doesn't return the review", async () => {
     const chaiHttpResponse = await chai

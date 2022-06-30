@@ -10,19 +10,21 @@ const prisma = new PrismaClient();
 
 describe('Creating a new user', () => {
   before(async () => {
-    sinon.stub(prisma.user, 'create').resolves([
+    sinon.stub(prisma.task, 'findUnique').resolves(null);
+
+    sinon.stub(prisma.user, 'create').resolves(
       {
         id: 9,
         name: 'Brett Wiltshire',
         email: 'brett2@email.com',
         createIn: '2022-06-30T17:37:03.677Z',
       },
-    ]);
+    );
   });
 
-  // after(() => {
-  //   prisma.user.findUnique.restore();
-  // });
+  after(() => {
+    sinon.restore();
+  });
 
   it('Submitting the correct information', async () => {
     const chaiHttpResponse = await chai

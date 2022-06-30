@@ -23,7 +23,7 @@ __Os usuários devem ser capaz de:__
 - Express.js
 - Prisma
 - Postgres
-- Mocha, Chai and Sinon
+- Mocha, Chai e Sinon
 
 ## Endpoints
 
