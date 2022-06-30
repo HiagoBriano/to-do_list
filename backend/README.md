@@ -30,7 +30,7 @@ __Os usuários devem ser capaz de?__
 
 ### Endpoints
 
-<details><summary><h3>/user<h3></summary>
+<details><summary><h4>/user<h4></summary>
 
 <details><summary><strong>Criar um novo usuário</strong></summary><br />
 
@@ -61,7 +61,7 @@ __Os usuários devem ser capaz de?__
 </details>
 </details>
   
-<details><summary><h3>/login<h3></summary>
+<details><summary><h4>/login<h4></summary>
 
 <details><summary><strong>Fazer login na aplicação</strong></summary><br />
 
@@ -89,7 +89,7 @@ __Os usuários devem ser capaz de?__
 </details>
 </details>
 
-<details><summary><h3>/task<h3></summary>
+<details><summary><h4>/task<h4></summary>
 
 <details><summary><strong>Criar uma nova tarefa</strong></summary><br />
 
