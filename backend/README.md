@@ -1,14 +1,28 @@
-# API do aplicativo To-do List
+# Todo-List API
 
-Projeto idealizado pela [Trybe](https://www.betrybe.com/)
+A Todo List API é uma aplicação RESTful para a manipulação e leitura de tarefas, permitindo operações de CRUD e autenticação via JWT.
 
 ## Visão geral
 
 ### O desafio
 
-- Criar uma API para ser acessada e administrada por um site de lista de tarefas.
-- Fazer deploy pelo heroku.
-- Usar banco de dados relacional.
+A Todo List API foi pensada para a prática geral dos conhecimentos sobre uma aplicação em Node.js com Express, cobrindo tópicos como: SOLID, REST, TDD e POO.
+
+__Os usuários devem ser capaz de?__
+- Registrar-se e Autenticar-se
+- Criar tarefas
+- Buscar tarefas
+- Atualizar tarefas
+- Deletar tarefas
+- Consumir a API de qualquer plataforma via HTTP
+
+### Construído com
+
+- TypeScript
+- Node.js
+- Express.js
+- Prisma
+- Postgres
 
 ### Links
 
@@ -215,8 +229,12 @@ Projeto idealizado pela [Trybe](https://www.betrybe.com/)
 </details>
 </details>
 
+### Recursos úteis
+
+- [Documentação Prisma](https://www.prisma.io/docs/)
+
 ## Autor
 
-- Linkedin- [Hiago Briano](https://www.linkedin.com/in/hiago-briano/)
+- Linkedin - [Hiago Briano](https://www.linkedin.com/in/hiago-briano/)
 
 - Email - [hiago.artist@hotmail.com](maito:hiago.artist@hotmail.com)
