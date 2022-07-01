@@ -38,7 +38,10 @@ function Login() {
         </div>
 
         <div className="container-login-form-btn">
-          <button className="login-form-btn">Entrar</button>
+
+          <button className="login-form-btn">
+            Entrar.
+          </button>
         </div>
 
         <div className="create-account-text-center">
