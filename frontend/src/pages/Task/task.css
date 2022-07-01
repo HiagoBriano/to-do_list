@@ -1,13 +1,3 @@
-:root {
-  --dark: #374151;
-  --darker: #1f2937;
-  --darkest: #111827;
-  --gray: #6b7280;
-  --light: #eee;
-  --pink: #ec4899;
-  --purple: #8b5cf6;
-}
-
 body {
   display: flex;
   flex-direction: column;
@@ -26,7 +16,7 @@ body {
 .header-task h1 {
   font-size: 2.5rem;
   font-weight: 300;
-  color: var(--gray);
+  color: #6b7280;;
   margin-bottom: 1rem;
 }
 
@@ -47,12 +37,12 @@ input, button, select {
   padding: 1rem;
   border-radius: 1rem;
   margin-right: 1rem;
-  color: var(--light);
+  color: #eee;
   font-size: 1.25rem;
 }
 
 .new-task-input::placeholder {
-  color: var(--gray);
+  color: #6b7280;;
 }
 
 .new-task-submit {
@@ -69,7 +59,7 @@ input, button, select {
 
 .main-task {
   flex: 1 1 0%;
-  padding: 2rem 1rem;
+  padding: 0rem 1rem;
   max-width: 800px;
   width: 100%;
   margin: 0 auto;
@@ -82,7 +72,7 @@ input, button, select {
 .task-list h2 {
   font-size: 1.5rem;
   font-weight: 300;
-  color: var(--gray);
+  color: #6b7280;;
   margin-bottom: 1rem;
 }
 
@@ -96,7 +86,7 @@ input, button, select {
 }
 
 .tasks .content .text {
-  color: var(--light);
+  color: #eee;
   font-size: 1.125rem;
   width: 100%;
   display: block;
@@ -104,7 +94,7 @@ input, button, select {
 }
 
 .tasks .content .text:not(:read-only) {
-  color: var(--pink);
+  color: #48b0ec;
 }
 
 .tasks .actions {
@@ -137,4 +127,26 @@ input, button, select {
   background-color: rgb(87, 85, 85);
   border-radius: 1rem;
   text-align: center;
+}
+
+@media (max-width: 600px) {
+  .tasks {
+    flex-direction: column;
+    padding-left: 2rem;
+  }
+
+  .tasks .content {
+    margin-bottom: 0.5rem;
+  }
+
+  .tasks .actions {
+    margin-bottom: 0.5rem;
+    display: grid;
+    grid-template-columns: auto 1fr 1fr;
+
+  }
+
+  .tasks .actions .form-select {
+    margin-right: 5rem;
+  }
 }
