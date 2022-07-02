@@ -2,7 +2,6 @@ import { useState } from 'react';
 import './task.css';
 
 function Task() {
-
   const tarefas = {
     id: 11,
     name: 'Brett Wiltshire',
@@ -63,34 +62,48 @@ function Task() {
                   {edit ? (
                     <>
                       <div className="content">
-                        <input type="text" className="text" value={task} onChange={({target}) => setTask(target.value)} />
+                        <input
+                          type="text"
+                          className="text"
+                          value={task}
+                          onChange={({ target }) => setTask(target.value)}
+                        />
                       </div>
                       <div className="actions">
-                        <select className="form-select" value={status} onChange={({target}) => setStatus(target.value) }>
-                          <option value="pending">
-                            Pendente
-                          </option>
+                        <select
+                          className="form-select"
+                          value={status}
+                          onChange={({ target }) => setStatus(target.value)}
+                        >
+                          <option value="pending">Pendente</option>
                           <option value="in progress">Em andamento</option>
                           <option value="done">Completa</option>
                         </select>
-                        <button className="edit" onClick={() => setEdit(false)}>Salvar</button>
+                        <button className="edit" onClick={() => setEdit(false)}>
+                          Salvar
+                        </button>
                         <button className="delete">🗑️</button>
                       </div>
                     </>
                   ) : (
                     <>
                       <div className="content">
-                        <input type="text" className="text" value={task} readOnly />
+                        <input
+                          type="text"
+                          className="text"
+                          value={task}
+                          readOnly
+                        />
                       </div>
                       <div className="actions">
                         <select className="form-select" value={status} disabled>
-                          <option value="pending">
-                            Pendente
-                          </option>
+                          <option value="pending">Pendente</option>
                           <option value="in progress">Em andamento</option>
                           <option value="done">Completa</option>
                         </select>
-                        <button className="edit" onClick={() => setEdit(true)}>Editar</button>
+                        <button className="edit" onClick={() => setEdit(true)}>
+                          Editar
+                        </button>
                         <button className="delete">🗑️</button>
                       </div>
                     </>

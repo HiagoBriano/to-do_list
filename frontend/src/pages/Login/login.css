@@ -11,6 +11,10 @@
   text-align: center;
 }
 
+.login-logotipo {
+  margin-bottom: 1.2rem;
+}
+
 .login-form-title img {
   width: 90px;
 }
@@ -128,8 +132,16 @@ input:focus {
   background: linear-gradient(to left, #21d4fd, #b721ff);
 }
 
+.btn-off {
+  opacity: 0.3;
+}
+
 .login-form-btn:hover {
   cursor: pointer;
+}
+
+.btn-off:hover {
+  cursor: not-allowed;
 }
 
 .create-account-text-center {

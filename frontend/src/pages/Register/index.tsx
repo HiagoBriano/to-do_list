@@ -15,7 +15,7 @@ function Register() {
       <form className="login-form">
         <span className="login-form-title">Criar conta</span>
 
-        <span className="login-form-title">
+        <span className="login-form-title login-logotipo">
           <img src={logotipo} alt="imagem da logotipo" />
         </span>
 
