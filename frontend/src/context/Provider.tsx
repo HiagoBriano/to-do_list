@@ -6,11 +6,11 @@ interface IUserContextProvider {
 }
 
 const UserContextProvider = ({ children }: IUserContextProvider) => {
-  const [loading, setLoading] = useState(false);
+  const [token, setToken] = useState('');
 
   const contextValue = {
-    loading,
-    setLoading,
+    token,
+    setToken,
   };
 
   return (

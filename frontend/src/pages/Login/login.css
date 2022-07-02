@@ -132,7 +132,6 @@ input:focus {
   background: linear-gradient(to left, #21d4fd, #b721ff);
 }
 
-
 .login-form-btn:hover:not(:disabled) {
   cursor: pointer;
 }

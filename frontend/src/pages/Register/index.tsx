@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import Layout from '../../components/Layout';
 import Loading from '../../components/Loading';
+import usercontext from '../../context/Context';
 import logotipo from '../../images/logotipo.png';
 import { CreateAccount } from '../../services/CreateAccount';
 import './register.css';
@@ -16,6 +17,7 @@ function Register() {
   const [status, setStatus] = useState('');
   const [activeButton, setActiveButton] = useState(false);
   const [toLogin, setToLogin] = useState(false);
+  const { setToken } = useContext(usercontext);
 
   useEffect(() => {
     const regexEmail = /\S+@\S+\.\S+/;
@@ -35,17 +37,17 @@ function Register() {
     setLoading(true);
     setStatus('Estamos criando sua conta 😃');
     const response = await CreateAccount(name, email, password);
-    console.log(response);
-    
+
     if (response && response.message) {
       setLoading(false);
       alert('Ops, parece que você já tem cadastro com a gente');
-      setToLogin(true)
+      setToLogin(true);
       return;
     }
 
     setStatus('Só mais um pouco...');
     localStorage.setItem('token', JSON.stringify(response.token));
+    setToken(response.token);
 
     setLoading(false);
     setRedirect(true);

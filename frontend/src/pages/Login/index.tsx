@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import Layout from '../../components/Layout';
 import Loading from '../../components/Loading';
+import usercontext from '../../context/Context';
 import logotipo from '../../images/logotipo.png';
 import { Enter } from '../../services/Enter';
 import './login.css';
@@ -13,6 +14,7 @@ function Login() {
   const [redirect, setRedirect] = useState(false);
   const [status, setStatus] = useState('');
   const [activeButton, setActiveButton] = useState(false);
+  const { setToken } = useContext(usercontext);
 
   useEffect(() => {
     const regexEmail = /\S+@\S+\.\S+/;
@@ -37,6 +39,7 @@ function Login() {
 
     setStatus('Só mais um pouco...');
     localStorage.setItem('token', JSON.stringify(response.token));
+    setToken(response.token);
 
     setLoading(false);
     setRedirect(true);

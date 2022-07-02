@@ -1,7 +1,11 @@
 import axios from 'axios';
 import { API_URL } from './API_URL';
 
-export const CreateAccount = async (name: string, email: string, password: string) => {
+export const CreateAccount = async (
+  name: string,
+  email: string,
+  password: string
+) => {
   const response = await axios
     .post(`${API_URL}user`, {
       name,

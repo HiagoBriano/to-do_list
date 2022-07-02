@@ -1,13 +1,13 @@
 import { createContext } from 'react';
 
 interface IncitialValue {
-  loading: boolean;
-  setLoading: (newState: boolean) => void;
+  token: string;
+  setToken: (newState: string) => void;
 }
 
 export const incitialValue = {
-  loading: false,
-  setLoading: () => {},
+  token: '',
+  setToken: () => {},
 };
 
 const usercontext = createContext<IncitialValue>(incitialValue);
