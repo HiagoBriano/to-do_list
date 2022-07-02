@@ -1,8 +1,8 @@
-.login-form {
+.register-form {
   width: 100%;
 }
 
-.login-form-title {
+.register-form-title {
   display: block;
   font-size: 30px;
   color: azure;
@@ -11,11 +11,11 @@
   text-align: center;
 }
 
-.login-logotipo {
+.register-logotipo {
   margin-bottom: 0.8rem;
 }
 
-.login-form-title img {
+.register-form-title img {
   width: 90px;
 }
 
@@ -105,14 +105,14 @@ input:focus {
   width: 100%;
 }
 
-.container-login-form-btn {
+.container-register-form-btn {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   padding-bottom: 13px;
 }
 
-.login-form-btn {
+.register-form-btn {
   font-size: 15px;
   border: none;
   border-radius: 10px;
@@ -132,8 +132,16 @@ input:focus {
   background: linear-gradient(to left, #21d4fd, #b721ff);
 }
 
-.login-form-btn:hover {
+.register-form-btn:hover:not(:disabled) {
   cursor: pointer;
+}
+
+.btn-off {
+  opacity: 0.3;
+}
+
+.btn-off:hover {
+  cursor: not-allowed;
 }
 
 .create-account-text-center {

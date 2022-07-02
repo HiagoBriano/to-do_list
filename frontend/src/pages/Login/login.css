@@ -132,12 +132,13 @@ input:focus {
   background: linear-gradient(to left, #21d4fd, #b721ff);
 }
 
-.btn-off {
-  opacity: 0.3;
+
+.login-form-btn:hover:not(:disabled) {
+  cursor: pointer;
 }
 
-.login-form-btn:hover {
-  cursor: pointer;
+.btn-off {
+  opacity: 0.3;
 }
 
 .btn-off:hover {
