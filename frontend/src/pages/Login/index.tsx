@@ -17,16 +17,16 @@ function Login() {
   useEffect(() => {
     const regexEmail = /\S+@\S+\.\S+/;
     if (password.length > 5 && regexEmail.test(email)) {
-      setActiveButton(true)
+      setActiveButton(true);
     } else {
-      setActiveButton(false)
+      setActiveButton(false);
     }
-  }, [email, password ]);
+  }, [email, password]);
 
   const validData = async (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
     setLoading(true);
-    setStatus('Validando e-mail e senha')
+    setStatus('Validando e-mail e senha');
     const response = await Enter(email, password);
 
     if (response && response.message) {
@@ -35,7 +35,7 @@ function Login() {
       return;
     }
 
-    setStatus('Só mais um pouco...')
+    setStatus('Só mais um pouco...');
     localStorage.setItem('token', JSON.stringify(response.token));
 
     setLoading(false);
@@ -79,8 +79,8 @@ function Login() {
             <div className="container-login-form-btn">
               <button
                 className={`login-form-btn ${!activeButton && 'btn-off'}`}
-                  onClick={(event) => validData(event)}
-                  disabled={!activeButton}
+                onClick={(event) => validData(event)}
+                disabled={!activeButton}
               >
                 Entrar.
               </button>

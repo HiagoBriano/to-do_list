@@ -4,7 +4,7 @@ import './Loading.css';
 // https://www.cupcom.com.br/programacao/15-carregadores-de-paginas-animados-apenas-com-css.html
 
 interface IProps {
-  status: string
+  status: string;
 }
 
 function Loading({ status }: IProps) {

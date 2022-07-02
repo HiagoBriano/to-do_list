@@ -1,8 +1,8 @@
 import { createContext } from 'react';
 
 interface IncitialValue {
-  loading: boolean,
-  setLoading: (newState: boolean) => void,
+  loading: boolean;
+  setLoading: (newState: boolean) => void;
 }
 
 export const incitialValue = {

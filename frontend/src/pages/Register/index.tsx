@@ -22,7 +22,7 @@ function Register() {
         <div className="wrap-input">
           <input
             className={nome.length > 0 ? 'input has-value' : 'input'}
-            type='text'
+            type="text"
             minLength={3}
             value={nome}
             onChange={({ target }) => setNome(target.value)}
@@ -53,13 +53,18 @@ function Register() {
 
         <div className="wrap-input">
           <input
-            className={validatePassword.length > 0 ? 'input has-value' : 'input'}
+            className={
+              validatePassword.length > 0 ? 'input has-value' : 'input'
+            }
             type="password"
             minLength={6}
             value={validatePassword}
             onChange={({ target }) => setValidatePassword(target.value)}
           />
-          <span className="focus-input" data-placeholder="Confirme a sua senha" />
+          <span
+            className="focus-input"
+            data-placeholder="Confirme a sua senha"
+          />
         </div>
 
         <div className="container-login-form-btn">
