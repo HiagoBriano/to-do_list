@@ -1,10 +1,8 @@
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import { prismaClient } from "./prismaClient";
 
 const deleteTask = async (idTask: number) => {
   try {
-    await prisma.task.delete({
+    await prismaClient.task.delete({
       where: { id: idTask },
     });
 

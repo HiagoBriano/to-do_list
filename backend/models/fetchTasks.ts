@@ -1,10 +1,8 @@
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import { prismaClient } from './prismaClient';
 
 const fetchTasks = async (id: number) => {
   try {
-    const taskSearchReturn = await prisma.user.findUnique({
+    const taskSearchReturn = await prismaClient.user.findUnique({
       where: { id },
       select: {
         id: true,

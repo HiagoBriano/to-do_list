@@ -1,10 +1,8 @@
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import { prismaClient } from './prismaClient';
 
 const updateTask = async (idTask: number, task: string, status: string) => {
   try {
-    const response = await prisma.task.update({
+    const response = await prismaClient.task.update({
       where: { id: idTask },
       data: {
         task,
