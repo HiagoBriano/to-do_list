@@ -16,7 +16,7 @@ const updateTask = async (idTask: number, task: string, status: string) => {
         status: true,
         createIn: true,
         updatedAt: true,
-      }
+      },
     });
 
     return response;

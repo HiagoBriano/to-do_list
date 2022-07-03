@@ -1,6 +1,6 @@
-import deleteTask from "../models/deleteTask";
+import deleteTask from '../models/deleteTask';
 
-const serviceDeleteTask =  async (idTask: number) => {
+const serviceDeleteTask = async (idTask: number) => {
   return await deleteTask(idTask);
 };
 

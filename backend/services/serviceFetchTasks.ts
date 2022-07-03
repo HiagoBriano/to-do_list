@@ -1,6 +1,6 @@
-import fetchTasks from "../models/fetchTasks";
+import fetchTasks from '../models/fetchTasks';
 
-const serviceFetchTasks =  async (id: number) => {
+const serviceFetchTasks = async (id: number) => {
   return await fetchTasks(id);
 };
 

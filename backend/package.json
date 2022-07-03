@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node --loader ts-node/esm --experimental-specifier-resolution=node index.ts",
     "dev": "nodemon index.ts",
-    "docker": "docker image build -t backend_to-do-list:v1 . && docker run -dit -p 3001:3001 --name backend_to-do-list backend_to-do-list:v1",
+    "docker": "docker image build -t backend_to-do-list:v1 . && docker run -dit -p 3011:3011 --name backend_to-do-list backend_to-do-list:v1",
     "test": "mocha ./tests/*.test.js"
   },
   "keywords": [],

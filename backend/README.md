@@ -8,7 +8,8 @@ A Todo List API é uma aplicação RESTful para a manipulação e leitura de tar
 
 A Todo List API foi pensada para a prática geral dos conhecimentos sobre uma aplicação em Node.js com Express, cobrindo tópicos como: SOLID, REST e POO.
 
-__Os usuários devem ser capaz de:__
+**Os usuários devem ser capaz de:**
+
 - Registrar-se e Autenticar-se
 - Criar tarefas
 - Buscar tarefas
@@ -215,7 +216,7 @@ __Os usuários devem ser capaz de:__
 
 ```json
 {
-  "idTask": 8,
+  "idTask": 8
 }
 ```
 

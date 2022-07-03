@@ -11,15 +11,15 @@ const consultUserByEmail = async (email: string) => {
         id: true,
         name: true,
         email: true,
-        password: true
-      }
+        password: true,
+      },
     });
-    
+
     return createdUser;
   } catch (error) {
     console.log('Error querying email');
     console.log(error);
-    throw new Error("");
+    throw new Error('');
   }
 };
 

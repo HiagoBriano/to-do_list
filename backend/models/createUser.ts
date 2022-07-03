@@ -13,7 +13,7 @@ const createUser = async (name: string, email: string, password: string) => {
   } catch (error) {
     console.log('Error creating new user');
     console.log(error);
-    throw new Error("");
+    throw new Error('');
   }
 };
 

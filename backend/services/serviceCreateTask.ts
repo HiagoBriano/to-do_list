@@ -1,13 +1,8 @@
 import createTask from '../models/createTask';
 
-const serviceCreateTask = async (
-  id: number,
-  task: string,
-  status: string
-) => {
-  const createdTask = await createTask(task, status,id);
+const serviceCreateTask = async (id: number, task: string, status: string) => {
+  const createdTask = await createTask(task, status, id);
   return createdTask;
-
 };
 
 export default serviceCreateTask;

@@ -24,14 +24,13 @@ const fetchTasks = async (id: number) => {
         },
       },
     });
-    
+
     return taskSearchReturn;
   } catch (error) {
     console.log('Error fetching tasks');
     console.log(error);
-    throw new Error("");
+    throw new Error('');
   }
 };
-
 
 export default fetchTasks;

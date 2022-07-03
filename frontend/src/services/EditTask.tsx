@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { API_URL } from './API_URL';
 
 export const EditTask = async (
   authorization: string,
@@ -8,7 +9,7 @@ export const EditTask = async (
 ) => {
   var config = {
     method: 'patch',
-    url: 'http://localhost:3001/task',
+    url: `${API_URL}task`,
     headers: {
       authorization,
     },

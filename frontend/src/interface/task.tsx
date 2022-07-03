@@ -11,5 +11,5 @@ export interface IFetchTasks {
   name: string;
   email: string;
   Task: ITask[];
-  message?: string
+  message?: string;
 }

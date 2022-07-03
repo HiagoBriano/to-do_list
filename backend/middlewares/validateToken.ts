@@ -15,7 +15,7 @@ const validateToken = async (
   if (!validToken) {
     return res.status(400).json({ message: 'Invalid Token' });
   }
-  
+
   next();
 };
 

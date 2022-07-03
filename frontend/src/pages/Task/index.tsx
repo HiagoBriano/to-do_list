@@ -117,7 +117,7 @@ function TaskManager() {
 
   useEffect(() => {
     if (window.screen.width < 400) {
-      setTaskAdd('add')
+      setTaskAdd('add');
     }
 
     findTasks();
