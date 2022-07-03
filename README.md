@@ -102,7 +102,7 @@ npm start
 Abra o link abaixo no navegador de sua preferencia:
 
 ```
-http://localhost:3010/
+http://localhost:3000/
 ```
 </details>
 
