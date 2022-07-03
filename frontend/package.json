@@ -19,9 +19,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=3010 react-scripts start",
     "build": "react-scripts build",
-    "docker": "docker image build -t frontend_to-do-list:v1 . && docker run -dit -p 3010:3000 --name frontend_to-do-list frontend_to-do-list:v1",
+    "docker": "docker image build -t frontend_to-do-list:v1 . && docker run -dit -p 3010:3010 --name frontend_to-do-list frontend_to-do-list:v1",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
