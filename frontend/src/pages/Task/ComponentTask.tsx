@@ -1,19 +1,12 @@
 import { useState } from 'react';
-
-
-interface ITask {
-  id: number;
-  task: string;
-  status: 'done' | 'in progress' | 'pending';
-  createIn: any;
-  updatedAt: any;
-}
+import { ITask } from '../../interface/task';
 
 interface IProps {
   task: ITask;
+  remove: (idTask: number) => {};
 }
 
-function ComponentTask({ task }: IProps) {
+function ComponentTask({ task, remove }: IProps) {
   const [edit, setEdit] = useState(false);
   const [status, setStatus] = useState(task.status);
   const [currentTask, setCurrentTask] = useState(task.task);
@@ -27,9 +20,7 @@ function ComponentTask({ task }: IProps) {
               type="text"
               className="text"
               value={currentTask}
-              onChange={({ target }) =>
-                setCurrentTask(target.value)
-              }
+              onChange={({ target }) => setCurrentTask(target.value)}
             />
           </div>
           <div className="actions">
@@ -37,22 +28,14 @@ function ComponentTask({ task }: IProps) {
               className="form-select"
               value={status}
               onChange={({ target }) =>
-                setStatus(
-                  target.value as
-                    | 'done'
-                    | 'in progress'
-                    | 'pending'
-                )
+                setStatus(target.value as 'done' | 'in progress' | 'pending')
               }
             >
               <option value="pending">Pendente</option>
               <option value="in progress">Em andamento</option>
               <option value="done">Completa</option>
             </select>
-            <button
-              className="edit"
-              onClick={() => setEdit(false)}
-            >
+            <button className="edit" onClick={() => setEdit(false)}>
               Salvar
             </button>
             <button className="delete">🗑️</button>
@@ -69,13 +52,12 @@ function ComponentTask({ task }: IProps) {
               <option value="in progress">Em andamento</option>
               <option value="done">Completa</option>
             </select>
-            <button
-              className="edit"
-              onClick={() => setEdit(true)}
-            >
+            <button className="edit" onClick={() => setEdit(true)}>
               Editar
             </button>
-            <button className="delete">🗑️</button>
+            <button className="delete" onClick={() => remove(task.id)}>
+              🗑️
+            </button>
           </div>
         </>
       )}

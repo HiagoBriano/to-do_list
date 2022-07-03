@@ -2,6 +2,9 @@ import { useContext, useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import Loading from '../../components/Loading';
 import usercontext from '../../context/Context';
+import { ITask } from '../../interface/task';
+import { AddTask } from '../../services/AddTask';
+import { DeleteTask } from '../../services/DeleteTask';
 import { FetchTasks } from '../../services/FetchTasks';
 import ComponentTask from './ComponentTask';
 import './task.css';
@@ -9,38 +12,73 @@ import './task.css';
 function TaskManager() {
   const { token } = useContext(usercontext);
   const [tasks, setTasks] = useState<ITask[]>([]);
+  const [task, setTask] = useState<string>();
   const [toHome, setToHome] = useState(false);
   const [loading, setLoading] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
 
-  interface ITask {
-    id: number;
-    task: string;
-    status: 'done' | 'in progress' | 'pending';
-    createIn: any;
-    updatedAt: any;
-  }
-
   const findTasks = async () => {
+    setLoading(true);
+    setStatusMessage('Estamos buscando sua lista de tarefas atualizada');
+
     if (token.length < 10) {
       alert('Ops, algo deu errado, por favor, faça login novamente');
       setToHome(true);
       return;
     }
 
-    setLoading(true);
-
-    setStatusMessage('Estamos buscando sua lista de tarefas atualizada');
     const response = await FetchTasks(token);
 
     if (response.message) {
-      setLoading(false);
       setToHome(true);
       alert('Ops, algo deu errado, por favor, faça login novamente');
       return;
     }
+
     setTasks(response.Task);
     setLoading(false);
+  };
+
+  const newTask = async () => {
+    setLoading(true);
+    setStatusMessage('Estamos adicionando sua nova tarefa');
+
+    if (token.length < 10) {
+      alert('Ops, algo deu errado, por favor, faça login novamente');
+      setToHome(true);
+      return;
+    }
+
+    const response = await AddTask(token, task as string, 'in progress');
+
+    if (response.message !== 'created task') {
+      setToHome(true);
+      alert('Ops, algo deu errado, por favor, faça login novamente');
+      return;
+    }
+
+    findTasks();
+  };
+
+  const removeTask = async (idTask: number) => {
+    setLoading(true);
+    setStatusMessage('Estamos removendo sua nova tarefa');
+
+    if (token.length < 10) {
+      alert('Ops, algo deu errado, por favor, faça login novamente');
+      setToHome(true);
+      return;
+    }
+
+    const response = await DeleteTask(token, idTask);
+
+    if (response.message !== 'task removed') {
+      setToHome(true);
+      alert('Ops, algo deu errado, por favor, faça login novamente');
+      return;
+    }
+
+    findTasks();
   };
 
   useEffect(() => {
@@ -61,11 +99,15 @@ function TaskManager() {
                 type="text"
                 placeholder="O que está planejando?"
                 className="new-task-input"
+                value={task}
+                onChange={({ target }) => setTask(target.value)}
+                minLength={3}
               />
               <input
                 type="submit"
                 className="new-task-submit"
                 value="Adicionar"
+                onClick={() => newTask()}
               />
             </form>
           </header>
@@ -75,7 +117,7 @@ function TaskManager() {
               <h2>Tarefas</h2>
               <>
                 {tasks.map((current) => (
-                  <ComponentTask task={current} />
+                  <ComponentTask task={current} remove={removeTask} />
                 ))}
               </>
             </section>
