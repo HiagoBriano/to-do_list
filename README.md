@@ -2,12 +2,27 @@
 
 ## Visão geral
 
-### Contexto:
+### Desafio:
 
 A empresa Ebytr está passando por problemas de produtividade/controle porque as pessoas colaboradoras vêm tendo dificuldade na organização de suas tarefas individuais. Por esse motivo, a diretora de produto Carolina Bigonha decidiu implantar uma nova forma de organizar as tarefas.
 Você foi a pessoa contratada para desenvolver um sistema capaz de auxiliar as pessoas colaboradoras a se organizar e ter mais produtividade.
 
-## 🚀 Rode em sua maquina
+<br />
+
+## Solução criada:
+
+Criei um site de lista de tarefas para os colaboradores adicionarem as tarefas deles, e é possível consultar a tarefa de qualquer lugar, é só fazer login com a conta criada.
+
+ `Veja a aplicação rodando:` [Clique aqui](https://hiagobriano.github.io/frontend_to-do_list-/)
+
+#### Primeiro acesso?
+> É importante saber que para fazer o cadastro é preciso colocar um e-mail em um formato valido e uma senha de pelo menos 6 caracteres.
+
+
+
+<br />
+
+## Rode em sua maquina
 
 ### Modo tradicional
 
@@ -157,9 +172,16 @@ http://localhost:3010/
 </details>
 
 </details>
+<br />
 
 ## Documentações:
 
 > `Backend:` [Clique aqui](https://github.com/HiagoBriano/to-do_list/blob/master/backend/README.md)
 
+<br />
 
+## Autor
+
+Linkedin - [Hiago Briano](https://www.linkedin.com/in/hiago-briano/)
+
+Email - hiago.artist@hotmail.com
