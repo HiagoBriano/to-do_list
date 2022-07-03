@@ -11,6 +11,9 @@ const fetchTasks = async (id: number) => {
         name: true,
         email: true,
         Task: {
+          orderBy: {
+            createIn: 'asc',
+          },
           select: {
             id: true,
             task: true,
