@@ -1,9 +1,9 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import { useContext, useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import Loading from '../../components/Loading';
 import usercontext from '../../context/Context';
 import { FetchTasks } from '../../services/FetchTasks';
+import ComponentTask from './ComponentTask';
 import './task.css';
 
 function TaskManager() {
@@ -33,20 +33,13 @@ function TaskManager() {
     setStatusMessage('Estamos buscando sua lista de tarefas atualizada');
     const response = await FetchTasks(token);
 
-    console.log('resposta inteira');
-    console.log(response);
-
-    console.log('resposta task');
-    console.log(response.Task);
-    
-
     if (response.message) {
       setLoading(false);
       setToHome(true);
       alert('Ops, algo deu errado, por favor, faça login novamente');
       return;
     }
-    setTasks(response.Task)
+    setTasks(response.Task);
     setLoading(false);
   };
 
@@ -81,88 +74,9 @@ function TaskManager() {
             <section className="task-list">
               <h2>Tarefas</h2>
               <>
-                {tasks.map((current) => {
-                  // const [edit, setEdit] = useState(false);
-                  // const [status, setStatus] = useState(current.status);
-                  // const [currentTask, setCurrentTask] = useState(current.task);
-
-                  const edit = false;
-                  const status = current.status;
-                  const currentTask = current.task;
-
-                  return (
-                    <div className="tasks" key={String(current.id)}>
-                      {edit ? (
-                        <>
-                          <div className="content">
-                            <input
-                              type="text"
-                              className="text"
-                              value={currentTask}
-                              // onChange={({ target }) =>
-                              //   setCurrentTask(target.value)
-                              // }
-                            />
-                          </div>
-                          <div className="actions">
-                            <select
-                              className="form-select"
-                              value={status}
-                              // onChange={({ target }) =>
-                              //   setStatus(
-                              //     target.value as
-                              //       | 'done'
-                              //       | 'in progress'
-                              //       | 'pending'
-                              //   )
-                              // }
-                            >
-                              <option value="pending">Pendente</option>
-                              <option value="in progress">Em andamento</option>
-                              <option value="done">Completa</option>
-                            </select>
-                            <button
-                              className="edit"
-                              // onClick={() => setEdit(false)}
-                            >
-                              Salvar
-                            </button>
-                            <button className="delete">🗑️</button>
-                          </div>
-                        </>
-                      ) : (
-                        <>
-                          <div className="content">
-                            <input
-                              type="text"
-                              className="text"
-                              value={currentTask}
-                              readOnly
-                            />
-                          </div>
-                          <div className="actions">
-                            <select
-                              className="form-select"
-                              value={status}
-                              disabled
-                            >
-                              <option value="pending">Pendente</option>
-                              <option value="in progress">Em andamento</option>
-                              <option value="done">Completa</option>
-                            </select>
-                            <button
-                              className="edit"
-                              // onClick={() => setEdit(true)}
-                            >
-                              Editar
-                            </button>
-                            <button className="delete">🗑️</button>
-                          </div>
-                        </>
-                      )}
-                    </div>
-                  );
-                })}
+                {tasks.map((current) => (
+                  <ComponentTask task={current} />
+                ))}
               </>
             </section>
           </main>

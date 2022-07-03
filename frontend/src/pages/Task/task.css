@@ -90,7 +90,7 @@ select {
 .tasks .content .text {
   color: #eee;
   font-size: 1.125rem;
-  width: 100%;
+  width: 115%;
   display: block;
   transition: 0.4s;
 }
@@ -139,6 +139,10 @@ select {
 
   .tasks .content {
     margin-bottom: 0.5rem;
+  }
+
+  .tasks .content .text {
+    width: 88%;
   }
 
   .tasks .actions {
