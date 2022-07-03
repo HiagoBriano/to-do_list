@@ -134,7 +134,7 @@ select {
 @media (max-width: 600px) {
   .tasks {
     flex-direction: column;
-    padding-left: 2rem;
+    padding-left: 1.5rem;
   }
 
   .tasks .content {
@@ -153,5 +153,14 @@ select {
 
   .tasks .actions .form-select {
     margin-right: 5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .new-task-input {
+    width: 10px;
+  }
+  .tasks .actions .form-select {
+    margin-right: 1rem;
   }
 }
