@@ -5,6 +5,7 @@ import usercontext from '../../context/Context';
 import { ITask } from '../../interface/task';
 import { AddTask } from '../../services/AddTask';
 import { DeleteTask } from '../../services/DeleteTask';
+import { EditTask } from '../../services/EditTask';
 import { FetchTasks } from '../../services/FetchTasks';
 import ComponentTask from './ComponentTask';
 import './task.css';
@@ -34,7 +35,7 @@ function TaskManager() {
       alert('Ops, algo deu errado, por favor, faça login novamente');
       return;
     }
-
+    
     setTasks(response.Task);
     setLoading(false);
   };
@@ -62,7 +63,7 @@ function TaskManager() {
 
   const removeTask = async (idTask: number) => {
     setLoading(true);
-    setStatusMessage('Estamos removendo sua nova tarefa');
+    setStatusMessage('Estamos removendo sua tarefa');
 
     if (token.length < 10) {
       alert('Ops, algo deu errado, por favor, faça login novamente');
@@ -73,6 +74,27 @@ function TaskManager() {
     const response = await DeleteTask(token, idTask);
 
     if (response.message !== 'task removed') {
+      setToHome(true);
+      alert('Ops, algo deu errado, por favor, faça login novamente');
+      return;
+    }
+
+    findTasks();
+  };
+
+  const UpdateTask = async (idTask: number, task: string, status: string) => {
+    setLoading(true);
+    setStatusMessage('Estamos atualizando sua tarefa');
+
+    if (token.length < 10) {
+      alert('Ops, algo deu errado, por favor, faça login novamente');
+      setToHome(true);
+      return;
+    }
+
+    const response = await EditTask(token, idTask, task, status);
+
+    if (response.message) {
       setToHome(true);
       alert('Ops, algo deu errado, por favor, faça login novamente');
       return;
@@ -117,7 +139,11 @@ function TaskManager() {
               <h2>Tarefas</h2>
               <>
                 {tasks.map((current) => (
-                  <ComponentTask task={current} remove={removeTask} />
+                  <ComponentTask
+                    task={current}
+                    remove={removeTask}
+                    update={UpdateTask}
+                  />
                 ))}
               </>
             </section>

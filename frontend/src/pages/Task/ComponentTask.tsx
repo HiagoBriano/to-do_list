@@ -4,9 +4,10 @@ import { ITask } from '../../interface/task';
 interface IProps {
   task: ITask;
   remove: (idTask: number) => {};
+  update: (idTask: number, task: string, status: string) => {};
 }
 
-function ComponentTask({ task, remove }: IProps) {
+function ComponentTask({ task, remove, update }: IProps) {
   const [edit, setEdit] = useState(false);
   const [status, setStatus] = useState(task.status);
   const [currentTask, setCurrentTask] = useState(task.task);
@@ -35,7 +36,10 @@ function ComponentTask({ task, remove }: IProps) {
               <option value="in progress">Em andamento</option>
               <option value="done">Completa</option>
             </select>
-            <button className="edit" onClick={() => setEdit(false)}>
+            <button
+              className="edit"
+              onClick={() => update(task.id, currentTask, status)}
+            >
               Salvar
             </button>
             <button className="delete">🗑️</button>
