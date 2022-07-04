@@ -13,7 +13,7 @@ function ComponentTask({ task, remove, update }: IProps) {
   const [currentTask, setCurrentTask] = useState(task.task);
 
   return (
-    <div className="tasks" key={task.id}>
+    <>
       {edit ? (
         <>
           <div className="content">
@@ -38,11 +38,16 @@ function ComponentTask({ task, remove, update }: IProps) {
             </select>
             <button
               className="edit"
-              onClick={() => update(task.id, currentTask, status)}
+              onClick={() => {
+                update(task.id, currentTask, status);
+                setEdit(false);
+              }}
             >
               Salvar
             </button>
-            <button className="delete">🗑️</button>
+            <button className="delete" onClick={() => remove(task.id)}>
+              🗑️
+            </button>
           </div>
         </>
       ) : (
@@ -65,7 +70,7 @@ function ComponentTask({ task, remove, update }: IProps) {
           </div>
         </>
       )}
-    </div>
+    </>
   );
 }
 

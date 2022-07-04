@@ -4,6 +4,7 @@ import Layout from '../../components/Layout';
 import Loading from '../../components/Loading';
 import usercontext from '../../context/Context';
 import logotipo from '../../images/logotipo.png';
+import { activateServer } from '../../services/activateServer';
 import { Enter } from '../../services/Enter';
 import './login.css';
 
@@ -24,6 +25,11 @@ function Login() {
       setActiveButton(false);
     }
   }, [email, password]);
+
+  useEffect(() => {
+    // usado para ativar o servidor e diminuir a latência
+    activateServer();
+  }, []);
 
   const validData = async (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();

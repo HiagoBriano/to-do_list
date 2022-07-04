@@ -4,7 +4,7 @@
 
 ### O desafio
 
-Criar um site capaz de gerenciar o [banco de dados](https://github.com/HiagoBriano/to-do_list/tree/master/backend), fazendo login e cadastro de usuários e criando, editando e removendo tarefas.
+Criar um site capaz de gerenciar o [banco de dados](https://github.com/HiagoBriano/to-do_list/tree/master/backend), incluindo fazer login e cadastro de usuários. O site possibilitará também, criar, editar e remover tarefas.
 
 **Os usuários devem ser capaz de:**
 

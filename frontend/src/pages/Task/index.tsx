@@ -13,11 +13,12 @@ import './task.css';
 function TaskManager() {
   const { token } = useContext(usercontext);
   const [tasks, setTasks] = useState<ITask[]>([]);
-  const [task, setTask] = useState<string>();
+  const [task, setTask] = useState<string>('');
   const [toHome, setToHome] = useState(false);
   const [loading, setLoading] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
   const [tasAdd, setTaskAdd] = useState('adicionar');
+  const [activeButton, setActiveButton] = useState(false);
 
   function delay(n: number) {
     return new Promise(function (resolve) {
@@ -25,10 +26,10 @@ function TaskManager() {
     });
   }
 
-  const findTasks = async () => {
+  const findTasks = async (withDelay?: boolean) => {
     setLoading(true);
 
-    setStatusMessage('Atualizando servidor');
+    setStatusMessage('Estamos buscando sua lista de tarefas atualizada');
 
     if (token.length < 10) {
       alert('Ops, algo deu errado, por favor, faça login novamente');
@@ -36,9 +37,11 @@ function TaskManager() {
       return;
     }
 
-    await delay(1.5);
+    // Este delay foi colocado porque quando adicionamos uma tarefa nova não dava tempo do bando de dados atualizar e a lista vinha desatualizada.
+    if (withDelay) {
+      await delay(1.5);
+    }
 
-    setStatusMessage('Estamos buscando sua lista de tarefas atualizada');
     const response = await FetchTasks(token);
 
     if (response.message) {
@@ -56,12 +59,6 @@ function TaskManager() {
     setTask('');
     setStatusMessage('Estamos adicionando sua nova tarefa');
 
-    if (token.length < 10) {
-      alert('Ops, algo deu errado, por favor, faça login novamente');
-      setToHome(true);
-      return;
-    }
-
     const response = await AddTask(token, task as string, 'pending');
 
     if (response.message !== 'created task') {
@@ -70,18 +67,12 @@ function TaskManager() {
       return;
     }
 
-    findTasks();
+    findTasks(true);
   };
 
   const removeTask = async (idTask: number) => {
-    setLoading(true);
-    setStatusMessage('Estamos removendo sua tarefa');
-
-    if (token.length < 10) {
-      alert('Ops, algo deu errado, por favor, faça login novamente');
-      setToHome(true);
-      return;
-    }
+    const updatedList = tasks.filter(({ id }) => id !== idTask);
+    setTasks(updatedList);
 
     const response = await DeleteTask(token, idTask);
 
@@ -90,19 +81,10 @@ function TaskManager() {
       alert('Ops, algo deu errado, por favor, faça login novamente');
       return;
     }
-
-    findTasks();
   };
 
   const UpdateTask = async (idTask: number, task: string, status: string) => {
-    setLoading(true);
     setStatusMessage('Estamos atualizando sua tarefa');
-
-    if (token.length < 10) {
-      alert('Ops, algo deu errado, por favor, faça login novamente');
-      setToHome(true);
-      return;
-    }
 
     const response = await EditTask(token, idTask, task, status);
 
@@ -111,9 +93,15 @@ function TaskManager() {
       alert('Ops, algo deu errado, por favor, faça login novamente');
       return;
     }
-
-    await findTasks();
   };
+
+  useEffect(() => {
+    if (task.length > 0) {
+      setActiveButton(true);
+    } else {
+      setActiveButton(false);
+    }
+  }, [task]);
 
   useEffect(() => {
     if (window.screen.width < 400) {
@@ -142,25 +130,29 @@ function TaskManager() {
                 onChange={({ target }) => setTask(target.value)}
                 minLength={3}
               />
-              <input
+              <button
                 type="submit"
                 className="new-task-submit"
-                value={tasAdd}
                 onClick={() => newTask()}
-              />
+                disabled={!activeButton}
+              >
+                {tasAdd}
+              </button>
             </form>
           </header>
 
           <main className="main-task">
             <section className="task-list">
-              <h2>Tarefas</h2>
+              <h2>{tasks.length > 0 ? 'Tarefas' : 'Sua lista está vazia'}</h2>
               <>
                 {tasks.map((current) => (
-                  <ComponentTask
-                    task={current}
-                    remove={removeTask}
-                    update={UpdateTask}
-                  />
+                  <div className="tasks" key={current.id}>
+                    <ComponentTask
+                      task={current}
+                      remove={removeTask}
+                      update={UpdateTask}
+                    />
+                  </div>
                 ))}
               </>
             </section>

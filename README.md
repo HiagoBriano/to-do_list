@@ -11,7 +11,7 @@ Você foi a pessoa contratada para desenvolver um sistema capaz de auxiliar as p
 
 ## Solução criada:
 
-Criei um site de lista de tarefas para os colaboradores adicionarem as tarefas deles, e é possível consultar a tarefa de qualquer lugar, é só fazer login com a conta criada.
+Criei um site de lista de tarefas para os colaboradores adicionarem suas tarefas. É possível consultar a tarefa de qualquer lugar, basta fazer login com a conta criada.
 
  `Veja a aplicação rodando:` [https://hiagobriano.github.io/frontend_to-do_list-/](https://hiagobriano.github.io/frontend_to-do_list-/)
 
