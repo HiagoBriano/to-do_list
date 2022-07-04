@@ -1,12 +1,12 @@
-# Todo-List API
+# To-do-List API
 
-A Todo List API é uma aplicação RESTful para a manipulação e leitura de tarefas, permitindo operações de CRUD e autenticação via JWT.
+A To-do List API é uma aplicação RESTful para a manipulação e leitura de tarefas, permitindo operações de CRUD e autenticação via JWT.
 
 ## Visão geral
 
 ### O desafio
 
-A Todo List API foi pensada para a prática geral dos conhecimentos sobre uma aplicação em Node.js com Express, cobrindo tópicos como: SOLID, REST e POO.
+A To-do List API foi pensada para a prática geral dos conhecimentos sobre uma aplicação em Node.js com Express, cobrindo tópicos como: SOLID, REST e POO.
 
 **Os usuários devem ser capaz de:**
 
@@ -233,7 +233,7 @@ A Todo List API foi pensada para a prática geral dos conhecimentos sobre uma ap
 
 ## Recursos úteis
 
-- [Documentação Prisma](https://www.prisma.io/docs/)
+- [Documentação do Prisma](https://www.prisma.io/docs/)
 
 ## Autor
 
