@@ -113,6 +113,7 @@ http://localhost:3010/
   <summary><b>Requisitos:</b></summary><br>
   
   - Ter o `Git` instalado em sua máquina;
+  - Ter o `Node` instalado em sua máquina;
   - Ter o `docker` instalado em sua máquina.
   
 </details>
