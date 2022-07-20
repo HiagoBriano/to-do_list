@@ -131,6 +131,15 @@ select {
   text-align: center;
 }
 
+.exit-button {
+  color: azure;
+  font-size: 2rem;
+  cursor: pointer;
+  position: fixed;
+  bottom: 1rem;
+  left: 95%;
+}
+
 @media (max-width: 600px) {
   .tasks {
     flex-direction: column;
@@ -153,6 +162,12 @@ select {
 
   .tasks .actions .form-select {
     margin-right: 5rem;
+  }
+
+  .exit-button {
+    top: -675px;
+    left: 87%;
+    position: absolute;
   }
 }
 

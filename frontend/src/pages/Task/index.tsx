@@ -9,6 +9,7 @@ import { EditTask } from '../../services/EditTask';
 import { FetchTasks } from '../../services/FetchTasks';
 import ComponentTask from './ComponentTask';
 import './task.css';
+import { ImExit } from 'react-icons/im';
 
 function TaskManager() {
   const { token } = useContext(usercontext);
@@ -53,6 +54,11 @@ function TaskManager() {
     setTasks(response.Task);
     setLoading(false);
   };
+
+  const exit = () => {
+    localStorage.clear();
+    setToHome(true);
+  }
 
   const newTask = async () => {
     setLoading(true);
@@ -157,6 +163,14 @@ function TaskManager() {
               </>
             </section>
           </main>
+
+          <button
+            type="button"
+            className="exit-button"
+            onClick={() => exit()}
+          >
+            <ImExit />
+          </button>
         </>
       )}
     </>
