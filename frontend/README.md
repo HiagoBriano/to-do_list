@@ -18,7 +18,7 @@ Criar um site capaz de gerenciar o [banco de dados](https://github.com/HiagoBria
 ### Construído com
 
 - TypeScript
-- Reac.js
+- React.js
 - Axios
 
 ## Veja a aplicação rodando
