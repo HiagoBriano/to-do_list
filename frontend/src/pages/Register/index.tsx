@@ -21,16 +21,18 @@ function Register() {
 
   useEffect(() => {
     const regexEmail = /\S+@\S+\.\S+/;
+    const regexName = /^[a-z ]+$/i;
     if (
       password.length > 5 &&
       regexEmail.test(email) &&
-      password === validatePassword
+      password === validatePassword &&
+      regexName.test(name)
     ) {
       setActiveButton(true);
     } else {
       setActiveButton(false);
     }
-  }, [email, password, validatePassword]);
+  }, [email, name, password, validatePassword]);
 
   const validData = async (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
@@ -96,6 +98,7 @@ function Register() {
                 minLength={6}
                 value={password}
                 onChange={({ target }) => setPassword(target.value)}
+                title='Digite uma senha de pelo menos 6 caracteres'
               />
               <span className="focus-input" data-placeholder="Senha" />
             </div>
@@ -109,6 +112,7 @@ function Register() {
                 minLength={6}
                 value={validatePassword}
                 onChange={({ target }) => setValidatePassword(target.value)}
+                title='Repita a senha digitada anteriomente'
               />
               <span
                 className="focus-input"
