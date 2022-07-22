@@ -6,9 +6,11 @@ const serviceCreateUser = async (
   email: string,
   password: string
 ) => {
-  const queryAnswer = await consultUserByEmail(email);
+  const queryAnswer = await consultUserByEmail.consultUserByEmail(email);
+
   if (!queryAnswer) {
-    const newUserData = await createUser(name, email, password);
+    const newUserData = await createUser.createUser(name, email, password);
+
     return newUserData;
   }
 

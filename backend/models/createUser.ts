@@ -1,4 +1,4 @@
-import { prismaClient } from './prismaClient';
+import prismaClient from './prismaClient';
 
 const createUser = async (name: string, email: string, password: string) => {
   try {
@@ -15,4 +15,4 @@ const createUser = async (name: string, email: string, password: string) => {
   }
 };
 
-export default createUser;
+export default { createUser }

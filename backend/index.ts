@@ -21,3 +21,5 @@ app.use(serverError);
 app.listen(+PORT, () => {
   console.log(`Online at the Port ${PORT}`);
 });
+
+export default app;

@@ -1,4 +1,4 @@
-import { prismaClient } from "./prismaClient";
+import prismaClient from "./prismaClient";
 
 const deleteTask = async (idTask: number) => {
   try {

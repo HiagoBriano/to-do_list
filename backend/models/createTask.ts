@@ -1,4 +1,4 @@
-import { prismaClient } from './prismaClient';
+import prismaClient from './prismaClient';
 
 const createTask = async (task: string, status: string, authorId: number) => {
   try {

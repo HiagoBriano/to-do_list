@@ -1,6 +1,6 @@
-import { prismaClient } from './prismaClient';
+import prismaClient from './prismaClient';
 
-const consultUserByEmail = async (email: string) => {
+async function consultUserByEmail(email: string) {
   try {
     const createdUser = await prismaClient.user.findUnique({
       where: { email },
@@ -20,4 +20,4 @@ const consultUserByEmail = async (email: string) => {
   }
 };
 
-export default consultUserByEmail;
+export default { consultUserByEmail }
