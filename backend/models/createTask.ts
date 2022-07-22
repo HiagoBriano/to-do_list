@@ -14,4 +14,4 @@ const createTask = async (task: string, status: string, authorId: number) => {
   }
 };
 
-export default createTask;
+export default { createTask };

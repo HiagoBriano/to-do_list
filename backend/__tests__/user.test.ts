@@ -1,16 +1,11 @@
 import chai from 'chai';
 import sinon from 'sinon';
 import chaiHttp from 'chai-http';
-// import prismaClient from '../models/prismaClient';
 import consultUserByEmail from '../models/consultUserByEmail';
 import createUser from '../models/createUser';
 import app from '../index'
 
-// const consultUserByEmail = require('../models/consultUserByEmail');
-// const createUser = require('../models/createUser');
-
 chai.use(chaiHttp);
-// const sandbox = sinon.createSandbox();
 
 const { expect } = require('chai');
 const date = new Date('2022-06-30T17:37:03.677Z');
@@ -28,14 +23,6 @@ const SEND_CREATE = {
   password: '123456',
 }
 
-const RESPONSE_API = {
-  id: 40,
-  name: "Renata Wiltshire",
-  email: "renata@email.com",
-  createIn: "2022-06-30T17:37:03.677Z",
-  token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDUsImVtYWlsIjoicmVuYXRhQGVtYWlsLmNvbSIsImlhdCI6MTY1ODQ1MzYwOSwiZXhwIjoxNjU4NTQwMDA5fQ.z8CxPePjqTjB14kgPxFC0rJ_v3mcLlMkMWP-e8deJqg"
-}
-
 describe('Creating a new user', () => {
   before(() => {
     sinon.stub(consultUserByEmail, 'consultUserByEmail').resolves(undefined);
@@ -51,8 +38,6 @@ describe('Creating a new user', () => {
       .request(app)
       .post('/user')
       .send(SEND_CREATE);
-
-    console.log(chaiHttpResponse.text);
 
     expect(chaiHttpResponse.status).to.be.eq(201);
     expect(chaiHttpResponse.body).to.have.property('id');
