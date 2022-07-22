@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node --loader ts-node/esm --experimental-specifier-resolution=node index.ts",
+    "predev": "prisma migrate dev",
     "dev": "nodemon index.ts",
     "docker": "docker image build -t backend_to-do-list:v1 . && docker run -dit -p 3011:3011 --name backend_to-do-list backend_to-do-list:v1",
     "test": "mocha -r ts-node/register ./__tests__/*.test.ts -t 10000 --exit"

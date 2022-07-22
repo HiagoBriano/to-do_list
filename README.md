@@ -125,7 +125,6 @@ http://localhost:3010/
   <summary><b>Requisitos:</b></summary><br>
   
   - Ter o `Git` instalado em sua máquina;
-  - Ter o `Node` instalado em sua máquina;
   - Ter o `docker` instalado em sua máquina.
   
 </details>
@@ -148,33 +147,17 @@ git clone git@github.com:HiagoBriano/to-do_list.git
 
 <details>
   <summary><b>Vamos lá</b></summary><br>
-  
-  `Backend:`
 
-Entre na pasta de backend:
+Entre na pasta:
 
 ```
-cd to-do_list/backend
+cd to-do_list
 ```
   
 Inicie o docker com o comando:
 
 ```
-npm run docker
-```
-
-  `Frontend:`
-  
-Entre na pasta de frontend:
-
-```
-cd to-do_list/frontend
-```
-  
-Inicie o docker com o comando:
-
-```
-npm run docker
+docker-compose up -d
 ```
 
 Abra o link abaixo no navegador de sua preferencia:
@@ -182,6 +165,8 @@ Abra o link abaixo no navegador de sua preferencia:
 ```
 http://localhost:3010/
 ```
+
+> Obs.: Pode ser que precise esperar um minuto para a aplicação ficar pronta
 </details>
 
 </details>

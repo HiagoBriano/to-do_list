@@ -7,9 +7,6 @@ import consultUserByEmail from '../models/consultUserByEmail';
 chai.use(chaiHttp);
 const { expect } = require('chai');
 
-const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient();
-
 const RESPONSE_BD = {
   id: 8,
   name: 'Brett Wiltshire',
