@@ -1,6 +1,8 @@
-const chai = require('chai');
-const sinon = require('sinon');
-const chaiHttp = require('chai-http');
+import chai from 'chai';
+import sinon from 'sinon';
+import chaiHttp from 'chai-http';
+import app from '../index'
+import consultUserByEmail from '../models/consultUserByEmail';
 
 chai.use(chaiHttp);
 const { expect } = require('chai');
@@ -8,17 +10,17 @@ const { expect } = require('chai');
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
+const RESPONSE_BD = {
+  id: 8,
+  name: 'Brett Wiltshire',
+  email: 'brett@email.com',
+  password:
+    '$2a$04$6viIOEBjczjw7gbTT3pPKe0yPYWzbs7.LyCbzVVnbT5VVP8q26AvW',
+}
+
 describe('Making a request on the login page', () => {
   before(async () => {
-    sinon.stub(prisma.user, 'findUnique').resolves([
-      {
-        id: 8,
-        name: 'Brett Wiltshire',
-        email: 'brett@email.com',
-        password:
-          '$2a$04$6viIOEBjczjw7gbTT3pPKe0yPYWzbs7.LyCbzVVnbT5VVP8q26AvW',
-      },
-    ]);
+    sinon.stub(consultUserByEmail, 'consultUserByEmail').resolves(RESPONSE_BD);
   });
 
   after(() => {
@@ -27,7 +29,7 @@ describe('Making a request on the login page', () => {
 
   it("checks if it is returning the user's token, name and e-mail, and if it doesn't return the review", async () => {
     const chaiHttpResponse = await chai
-      .request('http://localhost:3001')
+      .request(app)
       .post('/login')
       .send({
         email: 'brett@email.com',
@@ -43,7 +45,7 @@ describe('Making a request on the login page', () => {
 
   it('without sending the email', async () => {
     const chaiHttpResponse = await chai
-      .request('http://localhost:3001')
+      .request(app)
       .post('/login')
       .send({
         password: '123456',
@@ -61,7 +63,7 @@ describe('Making a request on the login page', () => {
 
   it('without sending the password', async () => {
     const chaiHttpResponse = await chai
-      .request('http://localhost:3001')
+      .request(app)
       .post('/login')
       .send({
         email: 'brett@email.com',
@@ -79,7 +81,7 @@ describe('Making a request on the login page', () => {
 
   it('without sending email and password', async () => {
     const chaiHttpResponse = await chai
-      .request('http://localhost:3001')
+      .request(app)
       .post('/login')
       .send({});
 
@@ -95,7 +97,7 @@ describe('Making a request on the login page', () => {
 
   it('invalid password', async () => {
     const chaiHttpResponse = await chai
-      .request('http://localhost:3001')
+      .request(app)
       .post('/login')
       .send({
         email: 'brett@email.com',
@@ -109,10 +111,21 @@ describe('Making a request on the login page', () => {
     expect(chaiHttpResponse.body).to.not.have.property('password');
     expect(chaiHttpResponse.body.message).to.be.eq('invalid password');
   });
+});
+
+
+describe('invalid email', () => {
+  before(async () => {
+    sinon.stub(consultUserByEmail, 'consultUserByEmail').resolves(undefined);
+  });
+
+  after(() => {
+    sinon.restore();
+  });
 
   it('invalid email', async () => {
     const chaiHttpResponse = await chai
-      .request('http://localhost:3001')
+      .request(app)
       .post('/login')
       .send({
         email: 'brett@xablau.com',
