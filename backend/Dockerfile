@@ -1,5 +1,5 @@
 # Informa a imagem que eu quero ultilizar
-FROM node:16-alpine
+FROM node:16.19.0
 
 # Pasta de trabalho no docker
 WORKDIR /app/backend
