@@ -34,13 +34,12 @@ Criei um site de lista de tarefas para os colaboradores adicionarem suas tarefas
 
 ## Rode em sua maquina
 
-### Modo tradicional
-
 <details>
   <summary><b>Requisitos:</b></summary><br>
 
   - Ter o `Git` instalado em sua máquina;
-  - Ter o `node` instalado em sua máquina.
+  - Ter o `Node.js >= 14.17` instalado em sua máquina.
+  - Ter o `PostgreSQL` instalado em sua máquina.
   
 </details>
 
@@ -77,10 +76,18 @@ Instale as dependências do projeto:
 npm i
 ```
 
+Crie um arquivo `.env` com as seguintes informações:
+
+```
+DATABASE_URL=postgresql://USER:PASSWORD@HOST:PORT/to-do_list
+SECRET=super_senha
+PORT=3001
+```
+
 Configure o Prisma:
 
 ```
-npx prisma generate
+npx prisma migrate dev
 ```
 
 Inicie o projeto:
@@ -112,63 +119,12 @@ npm start
 Abra o link abaixo no navegador de sua preferencia:
 
 ```
-http://localhost:3010/
+http://localhost:3000/
 ```
 </details>
 
 
-### Usando Docker
 
-<details>
-  <summary><b>Requisitos:</b></summary><br>
-  
-  - Ter o `Git` instalado em sua máquina;
-  - Ter o `docker` instalado em sua máquina.
-  
-</details>
-
-<details>
-  <summary><b>Clonar</b></summary><br>
-
-Para clonar o repositório usando HTTPS:
-
-```
-git clone https://github.com/HiagoBriano/to-do_list.git
-```
-
-Para clonar usando SSH:
-
-```
-git clone git@github.com:HiagoBriano/to-do_list.git
-```
-</details>
-
-<details>
-  <summary><b>Vamos lá</b></summary><br>
-
-Entre na pasta:
-
-```
-cd to-do_list
-```
-  
-Inicie o docker com o comando:
-
-```
-docker-compose up -d
-```
-
-Abra o link abaixo no navegador de sua preferencia:
-
-```
-http://localhost:3010/
-```
-
-> Obs.: Pode ser que precise esperar um minuto para a aplicação ficar pronta
-</details>
-
-</details>
-<br />
 
 ## Documentações:
 

@@ -1,65 +1,51 @@
 version: "3.9"
 services:
-  frontend:
-    image: node:16-alpine
-    command: npm start # ou npm start
-    restart: on-failure
-    working_dir: /app/frontend
-    volumes:
-      - ./frontend:/app/frontend
-    ports:
-      - 3010:3010
-    environment:
-      - BACK_PORT=3011
-      - BACK_HOST=backend
-    depends_on:
-      backend:
-        condition: service_healthy
-    healthcheck:
-      test: ["CMD", "lsof", "-t", "-i:3010"] # Caso utilize outra porta interna para o front, altere ela aqui também
-      timeout: 10s
-      retries: 10
-  backend:
-    image: node:16-alpine
-    stdin_open: true
-    command: npm run dev
-    restart: on-failure
-    working_dir: /app/backend
-    volumes:
-      - ./backend:/app/backend
-    ports:
-      - 3011:3011
-    tty: true
-    depends_on:
-      postgres: # mysql ou postgres
-        condition: service_healthy
-    environment:
-      - PORT=3011
-      - DB_USER=root
-      - DB_PASSWORD=password
-      - HOSTNAME=postgres # mysql ou postgres
-      - DB_PORT=5432
-      - DB_NAME=to-do_List
-      - DATABASE_URL=postgresql://root:password@postgres:5432/to-do_List
-      - SECRET=super_senha
-    healthcheck:
-      test: ["CMD", "lsof", "-t", "-i:3011"] # Caso utilize outra porta interna para o back, altere ela aqui também
-      timeout: 10s
-      retries: 5
-  postgres:
+  # frontend:
+  #   container_name: frontend
+  #   build: ./frontend # caminho do dockerfile
+  #   environment:
+  #     - REACT_APP_BACKEND_HOSTNAME=localhost
+  #     - REACT_APP_BACKEND_PORT=3001
+  #   ports:
+  #     - 3000:3000
+  #   command: npm start # comando a ser executado assim que a aplicação subir
+  #   restart: on-failure
+  #   depends_on:
+  #     backend:
+  #       condition: service_started
+  
+  # backend:
+  #   container_name: backend
+  #   build: ./backend # caminho do dockerfile
+  #   environment:
+  #     - PORT=3001
+  #     - DATABASE_URL=postgresql://root:password@postgresdb:5432/to-do_List
+  #     - SECRET=super_senha
+  #   ports:
+  #     - 3001:3001
+  #   command: npm run docker # comando a ser executado assim que a aplicação subir
+  #   restart: on-failure
+  #   depends_on:
+  #     postgresdb:
+  #       condition: service_healthy
+  #   healthcheck:
+  #     test: ["CMD", "lsof", "-t", "-i:3001"] # Caso utilize outra porta interna para o back, altere ela aqui também
+  #     timeout: 10s
+  #     retries: 5
+  
+  postgresdb:
+    container_name: postgres
     image: postgres:14.3-alpine
-    restart: always
-    ports:
-      - 5432:5432
     environment:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=password
       - POSTGRES_DB=to-do_List
+    ports:
+      - 3002:5432
+    restart: always
     healthcheck:
       test: ["CMD-SHELL", "pg_isready", "-d", "db_prod"]
       interval: 30s
       timeout: 60s
       retries: 10
-      start_period: 30s  
-    cap_add:
-      - SYS_NICE # Deve omitir alertas menores
+      start_period: 30s
