@@ -25,10 +25,12 @@ Você foi a pessoa contratada para desenvolver um sistema capaz de auxiliar as p
 
 Criei um site de lista de tarefas para os colaboradores adicionarem suas tarefas. É possível consultar a tarefa de qualquer lugar, basta fazer login com a conta criada.
 
+## Aplicação rodando:
+
+ `Veja a aplicação rodando:` https://to-do-list-frontend-gueq.onrender.com
+
 #### Primeiro acesso?
 > É importante saber que para fazer o cadastro é preciso colocar um e-mail em um formato valido e uma senha de pelo menos 6 caracteres.
-
-
 
 <br />
 

@@ -30,7 +30,7 @@ A To-do List API foi pensada para a prática geral dos conhecimentos sobre uma a
 
 ### Link
 
-- URL da Api: [https://back-to-do-list-hbs.herokuapp.com/](https://back-to-do-list-hbs.herokuapp.com/)
+- URL da Api: https://to-do-list-backend-mazb.onrender.com
 
 ### /user
 
