@@ -30,7 +30,7 @@ A To-do List API foi pensada para a prática geral dos conhecimentos sobre uma a
 
 ### Link
 
-- URL da Api: https://to-do-list-backend-mazb.onrender.com
+- URL da Api: http://lb-to-do-list-back-2104008522.us-east-1.elb.amazonaws.com/
 
 ### /user
 
