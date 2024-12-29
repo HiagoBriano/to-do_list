@@ -27,7 +27,7 @@ Criei um site de lista de tarefas para os colaboradores adicionarem suas tarefas
 
 ## Aplicação rodando:
 
- `Veja a aplicação rodando:` http://lb-to-do-list-front-55123292.us-east-1.elb.amazonaws.com/
+ `Veja a aplicação rodando:` https://to-do-list.hiagobriano.online/
 
 #### Primeiro acesso?
 > É importante saber que para fazer o cadastro é preciso colocar um e-mail em um formato valido e uma senha de pelo menos 6 caracteres.
