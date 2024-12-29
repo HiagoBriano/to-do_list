@@ -23,7 +23,7 @@ Criar um site capaz de gerenciar o [banco de dados](https://github.com/HiagoBria
 
 ## Veja a aplicação rodando
 
-`Acesse:` http://lb-to-do-list-front-55123292.us-east-1.elb.amazonaws.com/
+`Acesse:` https://to-do-list.hiagobriano.online/
 
 #### Primeiro acesso?
 > É importante saber que para fazer o cadastro é preciso colocar um e-mail em um formato valido e uma senha de pelo menos 6 caracteres.
