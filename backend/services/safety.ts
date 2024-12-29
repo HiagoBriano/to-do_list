@@ -1,8 +1,9 @@
-import { compareSync, hash } from 'bcryptjs';
+import bcryptjs from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-require('dotenv/config');
+import 'dotenv/config'
 
 const SECRET = process.env.SECRET || 'invalid';
+const { compareSync, hash } = bcryptjs;
 
 interface IEmail {
   id: number;

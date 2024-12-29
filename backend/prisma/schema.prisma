@@ -3,17 +3,17 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  name      String
-  email     String   @unique
-  password  String
-  createIn  DateTime @default(now())
-  Task      Task[]
+  id       Int      @id @default(autoincrement())
+  name     String
+  email    String   @unique
+  password String
+  createIn DateTime @default(now())
+  Task     Task[]
 }
 
 model Task {

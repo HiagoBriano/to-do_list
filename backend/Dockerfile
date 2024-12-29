@@ -1,5 +1,5 @@
 # Informa a imagem que eu quero ultilizar
-FROM node:16.19.0
+FROM node:20.5.0-alpine
 
 # Pasta de trabalho no docker
 WORKDIR /app/backend
@@ -11,7 +11,7 @@ COPY . ./
 RUN npm i
 
 # Infoma a porta que eu quero exportar para o PC acessar
-EXPOSE 3001
+EXPOSE 3006
 
 # Comando para iniciar servidor
 # CMD ["npm", "run", "docker"]

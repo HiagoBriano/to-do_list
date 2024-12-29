@@ -2,50 +2,58 @@ version: "3.9"
 services:
   frontend:
     container_name: frontend
-    build: ./frontend # caminho do dockerfile
+    build: ./frontend
     environment:
       - REACT_APP_BACKEND_HOSTNAME=localhost
-      - REACT_APP_BACKEND_PORT=3001
+      - REACT_APP_BACKEND_PORT=3006
     ports:
-      - 3000:3000
-    command: npm start # comando a ser executado assim que a aplicação subir
+      - 3005:3005
+    networks:
+      - node-network
+    command: ["npm", "start"] # Boa prática: usar array para comandos
     restart: on-failure
     depends_on:
-      backend:
-        condition: service_started
-  
+      - backend # Ordem de inicialização (mas não espera "healthcheck" por padrão)
+
   backend:
     container_name: backend
-    build: ./backend # caminho do dockerfile
+    build: ./backend
     environment:
-      - PORT=3001
+      - PORT=3006
       - SECRET=super_senha
-      - DATABASE_URL=postgresql://root:password@postgresdb:5432/to-do_List
+      - DATABASE_URL=mysql://root:root@db-todo-list:3306/to-do_List
     ports:
-      - 3001:3001
-    command: npm run docker # comando a ser executado assim que a aplicação subir
+      - 3006:3006
+    networks:
+      - node-network
+    command: ["npm", "run", "docker"] # Boa prática: usar array para comandos
     restart: on-failure
     depends_on:
-      postgresdb:
-        condition: service_healthy
+      - db-todo-list # O backend depende do banco de dados
     healthcheck:
-      test: ["CMD", "lsof", "-t", "-i:3001"] # Caso utilize outra porta interna para o back, altere ela aqui também
+      test: ["CMD", "curl", "-f", "http://localhost:3006"] # Verifica se o backend responde na porta 3006
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  db-todo-list:
+    image: mysql:5.7 # Usando a imagem do MySQL 5.7
+    command: --innodb-use-native-aio=0 # Comando adicional para evitar problemas com AIO no MySQL
+    container_name: db
+    restart: always
+    tty: true # Garante operação estável em contêineres interativos
+    environment:
+      - MYSQL_ROOT_PASSWORD=root # Senha para o usuário root
+      - MYSQL_DATABASE=to-do_List # Cria o banco de dados automaticamente
+    networks:
+      - node-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-u", "root", "-proot"] # Verifica se o MySQL está rodando
+      interval: 30s
       timeout: 10s
       retries: 5
-  
-  postgresdb:
-    container_name: postgres
-    image: postgres:14.3-alpine
-    environment:
-      - POSTGRES_USER=root
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=to-do_List
-    ports:
-      - 3002:5432
-    restart: always
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready", "-d", "db_prod"]
-      interval: 30s
-      timeout: 60s
-      retries: 10
-      start_period: 30s
+      start_period: 30s # Aguarda o banco inicializar corretamente
+
+networks:
+  node-network:
+    driver: bridge # Rede do tipo bridge para comunicação entre os serviços

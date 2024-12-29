@@ -4,7 +4,7 @@ import serverError from './middlewares/serverError';
 import routerLogin from './routers/routerLogin';
 import routerTask from './routers/routerTask';
 import routerUser from './routers/routerUser';
-require('dotenv/config');
+import 'dotenv/config'
 
 const app = express();
 app.use(cors());

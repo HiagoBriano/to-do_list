@@ -1,16 +1,17 @@
 {
-  "extends": "@tsconfig/node14/tsconfig.json",
   "compilerOptions": {
-    "target": "es2016",
-    "module": "commonjs",
-    "rootDir": "./",
-    "outDir": "./dist",
-    "preserveConstEnums": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "skipLibCheck": true,
-    "sourceMap": true,
-    "lib": ["esnext"]
-  }
+    "target": "ES2022",             // Compilações modernas do JavaScript
+    "module": "ESNext",             // Gera código compatível com ES Modules (import/export)
+    "moduleResolution": "Node",     // Resolve módulos no estilo Node.js
+    "outDir": "./dist",             // Saída dos arquivos gerados (compilados)
+    "esModuleInterop": true,        // Permite importações interop com módulos CommonJS
+    "strict": true                  // Ativa verificações estritas no TypeScript
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  
 }

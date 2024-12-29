@@ -1,5 +1,5 @@
 # Informa a imagem que eu quero ultilizar
-FROM node:16.19.0
+FROM node:20.5.0-alpine
 
 # Pasta de trabalho no docker
 WORKDIR /app/frontend
@@ -11,7 +11,7 @@ COPY . ./
 RUN npm install
 
 # Infoma a porta que eu quero exportar para o PC acessar
-EXPOSE 3000
+EXPOSE 3005
 
 # Comando para iniciar servidor
 CMD ["npm", "start"]
