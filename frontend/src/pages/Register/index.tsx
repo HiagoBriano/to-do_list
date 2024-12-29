@@ -5,7 +5,9 @@ import Loading from '../../components/Loading';
 import usercontext from '../../context/Context';
 import logotipo from '../../images/logotipo.png';
 import { CreateAccount } from '../../services/CreateAccount';
+import { ToastContainer, toast } from 'react-toastify';
 import './register.css';
+
 
 function Register() {
   const [name, setName] = useState('');
@@ -20,13 +22,12 @@ function Register() {
   const { setToken } = useContext(usercontext);
 
   useEffect(() => {
-    const regexEmail = /\S+@\S+\.\S+/;
-    const regexName = /^[a-z ]+$/i;
+
     if (
-      password.length > 5 &&
-      regexEmail.test(email) &&
-      password === validatePassword &&
-      regexName.test(name)
+      email.length > 0 &&
+      password.length > 0 &&
+      validatePassword.length > 0 &&
+      name.length > 0
     ) {
       setActiveButton(true);
     } else {
@@ -36,6 +37,31 @@ function Register() {
 
   const validData = async (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
+
+    const regexEmail = /\S+@\S+\.\S+/;
+
+    if (!regexEmail.test(email)) {
+      toast.error('Digite um e-mail válido');
+      return;
+    }
+
+    const regexName = /^[a-z ]+$/i;
+
+    if (!regexName.test(name)) {
+      toast.error('Digite um nome válido');
+      return;
+    }
+
+    if (password.length < 6) {
+      toast.error('Digite uma senha com pelo menos 6 caracteres');
+      return;
+    }
+
+    if (password !== validatePassword) {
+      toast.error('As senhas não são iguais');
+      return;
+    }
+
     setLoading(true);
     setStatus('Estamos criando sua conta 😃');
     const response = await CreateAccount(name, email, password);
@@ -57,12 +83,14 @@ function Register() {
 
   return (
     <>
+      <ToastContainer />
       {redirect && <Navigate to="/task" />}
       {toLogin && <Navigate to="/" />}
       {loading ? (
         <Loading status={status} />
       ) : (
         <Layout>
+          
           <form className="register-form">
             <span className="register-form-title">Criar conta</span>
 

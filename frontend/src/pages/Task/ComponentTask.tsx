@@ -16,7 +16,7 @@ function ComponentTask({ task, remove, update }: IProps) {
     <>
       {edit ? (
         <>
-          <div className="content">
+          <div className="content" >
             <input
               type="text"
               className="text"
@@ -52,7 +52,7 @@ function ComponentTask({ task, remove, update }: IProps) {
         </>
       ) : (
         <>
-          <div className="content">
+          <div className="content" style={{ width: '100%' }}>
             <input type="text" className="text" value={currentTask} readOnly />
           </div>
           <div className="actions">
